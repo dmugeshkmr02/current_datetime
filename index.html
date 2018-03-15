@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie ie9" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Cache-control" content="no-cache"/>
+<title>Current Date Time</title>
+<!-- Favicon and apple touch icons-->
+<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+
+<!--[if IE]>
+<script type="text/javascript" src="js/html5shiv.js"></script>
+<![endif]-->
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/datePicker.css">
+</head>
+<body>
+	<div class="clear"></div>
+    <!-- .main_container -->
+    <section class="main_container">
+        <div class="date_box" >
+            <h1>Current Date Time</h1>
+            <input type="text" name="DateTime" id="DateTime1" class="date" value="" placeholder="Date / Time" readonly="readonly" />
+        </div>
+	</section>
+	<div class="clear"></div>
+<script type="text/javascript" src="js/events.js"></script>
+<script type="text/javascript" src="js/datePicker.min.js"></script>
+<script type="text/javascript">
+	'use strict';
+	window.myDatePicker = new DatePicker('.date', {
+		datePickerClass: 'date-picker has-week-no',
+		sundayBased: false,
+		renderWeekNo: true,
+		events: events // see ../../demo/events.js
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		/*---------------------------------------------------
+						Current DateTime
+		----------------------------------------------------*/
+		var d = new Date();
+		var dd = (d.getDate() < 10 ? '0' : '') + d.getDate();
+		var mm = ((d.getMonth() + 1) < 10 ? '0' : '') + (d.getMonth() + 1);
+		var yyyy = d.getFullYear();
+		var hh = d.getHours();
+		var min = d.getMinutes();
+		var cMeridiem = ((hh < 12)? "AM" : "PM");
+		
+		var cDate = yyyy + "-" + mm + "-" + dd;
+		var cTime = hh + ":" + min + " " + cMeridiem;
+		var cDateTime = yyyy + "-" + mm + "-" + dd + " " + hh + ":" + min + " " + cMeridiem;
+		$('.date').val(cDateTime);
+
+	});
+</script>
+</body>
+</html>
